@@ -1,5 +1,5 @@
 <?php
-include '.\view\solution\andriy\task1\action.php';
+include '.\view\solution\yuriy\task1\action.php';
 ?>
 
 
