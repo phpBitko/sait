@@ -1,14 +1,14 @@
 <div class="content">
     <form action="" method = "post">
-        <div> &#1042;&#1074;&#1077;&#1076;&#1110;&#1090;&#1100; &#1083;&#1086;&#1075;&#1110;&#1085;</br><input type="text" name="login"></div>
-        <div> &#1042;&#1074;&#1077;&#1076;&#1110;&#1090;&#1100; &#1087;&#1072;&#1088;&#1086;&#1083;&#1100;</br><input type="password" name="pass"></div>
+        <div> Введіть логін</br><input type="text" name="login"></div>
+        <div> Введіть пароль</br><input type="password" name="pass"></div>
         <div><input type="submit" name="sub" value="&#1058;&#1080;&#1089;&#1085;&#1080;"</br></div>
 
         <?php
         if(isset($_POST['login'], $_POST['pass'])) {
-            echo '<p>&#1042;&#1080; &#1074;&#1074;&#1077;&#1083;&#1080; &#1083;&#1086;&#1075;&#1110;&#1085;: ' . $_POST['login'];
+            echo '<p>Ви ввели логін: ' . $_POST['login'];
             '</p>';
-            echo '<p>&#1042;&#1080; &#1074;&#1074;&#1077;&#1083;&#1080; &#1087;&#1072;&#1088;&#1086;&#1083;&#1100;: ' . $_POST['pass'];
+            echo '<p>Ви ввели пароль: ' . $_POST['pass'];
             '</p';
         }
         ?>
