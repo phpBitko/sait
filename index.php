@@ -16,7 +16,7 @@ include './view/title.php';
 if(!isset($_GET['page'])){
 	$_GET['page']= 'view/main';
 }
-echo "<pre>"; print_r($_GET); echo "</pre>";
+//echo "<pre>"; print_r($_GET); echo "</pre>";
 
 include './'.$_GET['page'].'.php';
 
