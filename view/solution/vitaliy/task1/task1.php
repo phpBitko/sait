@@ -19,6 +19,6 @@ include './view/solution/vitaliy/task1/les1.php';
     <?php
       if( isset($nameVal))  echo "Логін - " .$nameVal;
        echo "<br />";
-      if( isset($nameVal))  echo  "Пароль - " .$nameVal;
+      if( isset($pasVal))  echo  "Пароль - " .$pasVal;
  ?>
 </div>
