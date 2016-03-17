@@ -35,7 +35,6 @@ a {
 #menu .main-menu{
     float: left;
     padding: 17px 13px 18px 13px;
-    height: 100%;
     font-size: 18px;
     list-style: none;
     color: #E4DACC;
@@ -102,4 +101,56 @@ li{
     font-weight: bold;
     text-align: center;
     margin: 10px;
+}
+.tableTasks {
+    height:100px;
+    width:100%;
+    border:solid 2px;
+    rules: solid 2px;
+    //display: inline-block;
+    font-size: 110%;
+    color: #737679;
+   // text-decoration: none;
+   // line-height: 2;
+  //  white-space: pre-line;
+   // overflow: auto;
+    border-collapse: collapse;
+    background: #dae6ec;
+    text-align: center;
+}
+th{
+    border: solid 2px;
+   // border-collapse: collapse;
+}
+.selectMenu{
+    width: 150px;
+    font: inherit;
+    color: #54585D;
+    margin: 20px 20px 0 0;
+}
+p{
+    font: inherit;
+    color: #54585D;
+}
+.submitForm {
+    display: inline-block;
+    //margin-top: 320px;
+    width: 9em;
+    font-size: 120%;
+    color:rgb(228, 218, 204);
+    text-shadow: #191512 0 1px 2px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.1;
+    white-space: pre-line;
+    padding: .7em 0;
+    border: 1px solid;
+    border-color:#A07965 #A07965 #754B1D #754B1D;
+    border-radius: 6px;
+    outline: none;
+    background: #A07965 linear-gradient(#A07965, #754B1D 50%, #754B1D 50%);
+    box-shadow: inset rgba(255, 255, 255, .5) 1px 1px;
+}
+.submitForm:active {
+    background: #A07965 linear-gradient( #754B1D  ,#754B1D  ,#A07965 );
 }
