@@ -3,6 +3,8 @@ class Controller_Tasks extends Controller{
 
 	function action_index()	{
 		//var_dump($this);
+		//echo(__DIR__);
+		//echo(__FILE__);
 		$this->view->generate('tasks/tasks_view.php', 'template_view.php');
 	}
 

@@ -1,0 +1,4 @@
+Функция:connectBd
+
+SQLSTATE[HY000] [1049] Unknown database 'php_ssait'
+

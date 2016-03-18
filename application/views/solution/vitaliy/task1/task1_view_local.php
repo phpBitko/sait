@@ -1,3 +1,4 @@
+
 <div class="content">
 	<img src = "/application/views/solution/vitaliy/task1/pic.jpg">
 	<h2>Напої кава <q>StarBuzz</q>> </h2>

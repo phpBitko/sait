@@ -1,9 +1,25 @@
 <?php
 class Controller_Solution extends Controller{
 
+/*	function __construct(){
+		$this->model = new Model_Solution();
+		$this->view = new View();
+	}*/
+
+
 	function action_index()	{
 		//var_dump($this);
+		//$dataModelSolution = $this->model->get_data();
+		//echo $dataModelSolution;
+
+
+
 		$this->view->generate('solution/solution_view.php', 'template_view.php');
+
+
+
+
+
 	}
 	function action_andriy($data)	{
 		//var_dump($this);

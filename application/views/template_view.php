@@ -30,7 +30,7 @@
 	</div>
 
 	<?php
-	//var_dump($this);
+
 	//echo $model_name."   Имя контроллера:".$controller_name.",".$action_name.",".$model_file.",".$model_path;
 	include 'application/views/'.$content_view;
 	?>
