@@ -4,7 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Title</title>
 	<link rel="stylesheet" href="/css/index.css">
+	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/timer.js"></script>
+	<script src="/js/selector.js"></script>
 
 </head>
 <body onload="startTimer()">

@@ -22,21 +22,21 @@ class Model_Execution extends Model{
 	public function get_data() {
 
 		$data = array();
-		$dbh = self::connectBd();
-		$sth = $dbh->query("SELECT `task_num`, `user_id`, `comment`, `result`
+		$dbh = $this->getConnectBd();
+		$sth = $dbh->query("SELECT `task_num`, `user_id`, `comment`, `result`,`selected_task`
 							FROM tasks_solution WHERE `is_active` = 1");
 		$sth->setFetchMode(PDO::FETCH_ASSOC);
 
 		while ($row = $sth->fetch()) {
 			array_push($data,$row);
 		}
-		$data = $this->replace_userId($data);
+		$data = $this->replace_user_id($data);
 		$data = $this->replace_checked($data);
 		return $data;
 
 	}
-	public function replace_userId($data){
-		$dbh = self::connectBd();
+	public function replace_user_id($data){
+		$dbh = $this->getConnectBd();
 		$sth = $dbh->query("SELECT `id`, `name`
 							FROM users WHERE `is_active` = 1");
 		$sth->setFetchMode(PDO::FETCH_ASSOC);
@@ -68,21 +68,48 @@ class Model_Execution extends Model{
 		return $data;
 	}
 
-	//Получить подключение к БД. Возвращает объект PDO.
-	public static function connectBd() {
-		try {
-			$dbh = new PDO(Core::$DSN, Core::$USER, Core::$PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
-			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			return $dbh;
 
-		} catch (PDOException $exept) {
+	public function setComments($data) {
+		try {
+			$sth = $this->queryBd("update tasks_solution set `selected_task` = 0");
+			$sth->execute();
+			$sth = $this->queryBd("update tasks_solution set `comment` = '{$data['comment']}', `selected_task` = 1
+									where user_id = {$data['user_id']} and task_num ={$data['task_num']}");
+
+			$sth->execute();
+
+		}catch (Exception $exept) {
 			$info = debug_backtrace();
-			file_put_contents('logs/mysql.log', strip_tags("Функция:".$info[0]['function']."\n\n"
+			file_put_contents('./logs/mysql.log', strip_tags("Функция:".$info[0]['function']."\n\n"
 							.$exept->getMessage())."\n\n", FILE_APPEND);
-			echo 'Подключение не удалось: '.$exept->getMessage();
-			exit();
+			echo 'Ошибка:'.$exept->getMessage();
 		}
 	}
+
+	public function getComments($dataMessage) {
+		try {
+			$data = array();
+			$dbh = $this->getConnectBd();
+			$sth = $dbh->query("select `comment` from tasks_solution where task_num = {$dataMessage['task_num']} and
+			                        user_id = {$dataMessage['user_id']}");
+			$sth->setFetchMode(PDO::FETCH_ASSOC);
+			//var_dump($sth);
+			while ($row = $sth->fetch()) {
+				array_push($data,$row);
+			}
+			//print_r($data);
+			return $data;
+
+		}catch (Exception $exept) {
+			$info = debug_backtrace();
+			file_put_contents('./logs/mysql.log', strip_tags("Функция:".$info[0]['function']."\n\n"
+							.$exept->getMessage())."\n\n", FILE_APPEND);
+			echo 'Ошибка:'.$exept->getMessage();
+		}
+	}
+
+
+
 
 
 
@@ -223,6 +250,7 @@ class Model_Execution extends Model{
 		try {
 
 			//Получаем объект PDO
+
 			$dbh = serverInfo::connectBd();
 			$idString = implode(',', $_POST['id_array']);
 

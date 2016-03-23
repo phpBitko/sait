@@ -103,6 +103,7 @@ li{
     margin: 10px;
 }
 .tableTasks {
+    table-layout: fixed;
     height:100px;
     width:100%;
     border:solid 2px;
@@ -120,8 +121,9 @@ li{
 }
 th{
     border: solid 2px;
-   // border-collapse: collapse;
+    word-wrap:break-word;
 }
+
 .selectMenu{
     width: 150px;
     font: inherit;
