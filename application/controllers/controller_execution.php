@@ -1,6 +1,6 @@
 <?php
-require_once('application\models\model_users.php');
-require_once('application\models\model_tasks.php');
+require_once('application/models/model_users.php');
+require_once('application/models/model_tasks.php');
 
 
 class Controller_Execution extends Controller{
