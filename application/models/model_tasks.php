@@ -51,7 +51,7 @@ class Model_Tasks extends Model{
 
 	}
 	public function setTask($data){
-		echo "<pre>"; print_r($data); echo "</pre>";
+		//echo "<pre>"; print_r($data); echo "</pre>";
 		$dataLocal = array();
 		if(isset($data['task_num']) && is_numeric($data['task_num'])){
 			$dbh = $this->getConnectBd();
