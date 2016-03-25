@@ -1,16 +1,25 @@
 <?php
+require_once('application/models/model_tasks.php');
+
 class Controller_Tasks extends Controller{
+	function __construct(){
+		$this->view = new View();
+		$this->tasks = new Model_Tasks();
+	}
+
 
 	function action_index()	{
 		//var_dump($this);
-		//echo(__DIR__);
+		//print_r($this->tasks->getActualTask());
 		//echo(__FILE__);
-		$this->view->generate('tasks/tasks_view.php', 'template_view.php');
+		$this->view->generate('tasks/tasks_view.php', 'template_view.php', $this->tasks->getActualTask());
 	}
 
 	function action_task($data)	{
-		if(file_exists('application/views/tasks/task'.$data.'_view.php')){
-			$this->view->generate('tasks/task'.$data.'_view.php', 'template_view.php');
+
+		//print_r($this->tasks->get_data($data));
+		if(file_exists('application/views/tasks/task_view.php')){
+			$this->view->generate('tasks/task_view.php', 'template_view.php', $this->tasks->get_data($data));
 		}else{
 			Route::ErrorPage404();
 		}

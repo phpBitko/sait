@@ -1,5 +1,6 @@
 <?php
 
+
 class Route{
 
 	static function start()	{
@@ -83,7 +84,8 @@ class Route{
 		$controller = new $controller_name;
 
 		$action = $action_name;
-
+		//echo $action."sdds".$param;
+		//xit();
 		if(method_exists($controller, $action)){
 			// вызываем действие контроллера
 				$controller->$action($param);

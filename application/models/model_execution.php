@@ -88,10 +88,12 @@ class Model_Execution extends Model{
 
 	public function getComments($dataMessage) {
 		try {
+			//print_r($dataMessage);
+			//exit();
 			$data = array();
 			$dbh = $this->getConnectBd();
 			$sth = $dbh->query("select `comment` from tasks_solution where task_num = {$dataMessage['task_num']} and
-			                        user_id = {$dataMessage['user_id']}");
+			                    user_id = {$dataMessage['user_id']}");
 			$sth->setFetchMode(PDO::FETCH_ASSOC);
 			//var_dump($sth);
 			while ($row = $sth->fetch()) {

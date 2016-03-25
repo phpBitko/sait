@@ -1,12 +1,16 @@
 <?php
+//namespace application\core;
 require_once('application/models/model_users.php');
 require_once('application/models/model_tasks.php');
 
+//use model_tasks.php;
+//use Controller;
+//use application\models\Model_Tasks;
 
 class Controller_Execution extends Controller{
 	//public $dataModelSolution;
 	function __construct(){
-		$this->model = new Model_Execution();
+		$this->execution = new Model_Execution();
 		$this->view = new View();
 		$this->users = new Model_Users();
 		$this->tasks = new Model_Tasks();
@@ -21,18 +25,19 @@ class Controller_Execution extends Controller{
 
 		if(isset($_POST) && isset($headers['HTTP_HEAD'])){
 			//echo "<pre>"; print_r($_POST); echo "</pre>";
-			echo json_encode($this->model->getComments($_POST));
+			echo json_encode($this->execution->getComments($_POST));
 			exit();
 		}elseif (isset($_POST) && $_POST !=null){
 
 			//echo "<pre>"; print_r( $_POST); echo "</pre>";
-			$this->model->setComments($_POST);
+			$this->execution->setComments($_POST);
 			$this->users->setSelected($_POST);
 			$this->tasks->setSelected($_POST);
 
 		}
-
-		$dataModelSolution = $this->model->get_data();
+		//echo json_encode($this->execution->getComments(array('task_num'=>'3',
+		//													'user_id'=>'1')));
+		$dataModelSolution = $this->execution->get_data();
 		$dataModelSolution['users'] = $this->users->get_data();
 		$dataModelSolution['tasks'] = $this->tasks->get_data();
 		//echo "<pre>"; print_r( $dataModelSolution); echo "</pre>";

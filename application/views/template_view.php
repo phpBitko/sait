@@ -4,9 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Title</title>
 	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/buttons.css">
 	<script src="/js/jquery-1.11.2.min.js"></script>
 	<script src="/js/timer.js"></script>
 	<script src="/js/selector.js"></script>
+	<script src="/js/addTask.js"></script>
 
 </head>
 <body onload="startTimer()">
@@ -27,7 +29,9 @@
 			<li class = "main-menu">
 				<a href="/solution">Тут виконувати завдання)</a>
 			</li>
-			<li class = "main-menu">Корисні посилання</li>
+			<li class = "main-menu">
+				<a href="/admin">Адмінка</a>
+			</li>
 		</ul>
 	</div>
 
@@ -38,7 +42,7 @@
 	?>
 
 	<div id="footer">
-
+		3Б © 2016. Всі права захищені.
 	</div>
 
 </div>

@@ -61,7 +61,7 @@
 		<p><b>Коментар до рішення завдання</b></p>
 
 
-		<p><textarea id = 'commentText'rows="10" cols="45" name="comment"><?php echo $data[$taskSelIndex]['comment']?></textarea></p>
+		<p><textarea id = 'commentText' rows="10" cols="45"  name="comment"><?php  if($data[$taskSelIndex]['comment']!= null) echo $data[$taskSelIndex]['comment']?></textarea></p>
 		<p><input type="submit" class="submitForm" value="Зберегти"></p>
 
 	</form>

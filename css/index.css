@@ -45,6 +45,14 @@ a {
 .main-menu:hover{
     background: #7c4e23;
 }
+#footer{
+    height: 50px;
+    background:#A07965;
+    border-bottom: 3px solid rgb(117, 75, 29);
+    border-top:3px solid rgb(117, 75, 29) ;
+    color: #E1DACC;
+    padding: 25px 0 0 0;
+}
 
 /*li{
 
@@ -75,12 +83,13 @@ li:before {
     text-align: left;
     margin: 20px;
     padding-bottom: 20px;
+   // display: inline-block;
 }
 
 .content a {
     text-decoration:  underline ;
 }
-.content a:hover{
+.content h3 a:hover{
     color: #2A547D;
 }
 
@@ -108,13 +117,8 @@ li{
     width:100%;
     border:solid 2px;
     rules: solid 2px;
-    //display: inline-block;
     font-size: 110%;
     color: #737679;
-   // text-decoration: none;
-   // line-height: 2;
-  //  white-space: pre-line;
-   // overflow: auto;
     border-collapse: collapse;
     background: #dae6ec;
     text-align: center;
@@ -155,4 +159,55 @@ p{
 }
 .submitForm:active {
     background: #A07965 linear-gradient( #754B1D  ,#754B1D  ,#A07965 );
+}
+#numTaskIn{
+    width: 50px;
+    padding-left: 10px ;
+    font: inherit;
+    color: #54585D;
+
+   // margin: 20px 20px 0 0;
+}
+
+.h{
+    //padding: 0;
+    margin: 0 0 10px 0;
+}
+#textTaskAdmin{
+    margin-bottom: 20px;
+    resize: none;
+}
+
+.textForHtml{
+    background: #E4C8A8;
+    width: 630px;
+    //max-width: 65%;
+    height: 450px;
+    cols: 20;
+    margin: 0 0 0 25px;
+    //resize: none;
+   // float: right;
+    padding: 0 10px 0 10px;
+    display: table-cell;
+    word-break: break-all;
+    border: 3px solid rgb(117, 75, 29);
+
+}
+
+#commentText{
+    resize: none;
+}
+#addTask{
+    display: inline-block;
+}
+#html{
+   width: 100%;
+
+}
+#size{
+   // display: -webkit-box;
+}
+#formIn{
+   float: left;
+    padding-right: 25px;
 }
