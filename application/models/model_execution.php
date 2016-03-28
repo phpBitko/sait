@@ -24,6 +24,7 @@ class Model_Execution extends Model{
 		}
 		$data = $this->replace_user_id($data);
 		$data = $this->replace_checked($data);
+		$dbh = null;
 		return $data;
 
 	}
@@ -44,6 +45,7 @@ class Model_Execution extends Model{
 
 			}
 		}
+		$dbh = null;
 		return $data;
 
 	}
@@ -92,6 +94,7 @@ class Model_Execution extends Model{
 				array_push($data,$row);
 			}
 			//print_r($data);
+			$dbh = null;
 			return $data;
 
 		}catch (Exception $exept) {

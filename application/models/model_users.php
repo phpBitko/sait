@@ -11,7 +11,7 @@ class Model_Users extends Model{
 		while ($row = $sth->fetch()) {
 			array_push($data,$row);
 		}
-
+		$dbh = null;
 		return $data;
 	}
 

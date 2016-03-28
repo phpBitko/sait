@@ -16,6 +16,7 @@ class Model_Tasks extends Model{
 		while ($row = $sth->fetch()) {
 			array_push($data,$row);
 		}
+		$dbh = null;
 		return $data;
 	}
 
@@ -122,6 +123,7 @@ class Model_Tasks extends Model{
 		while ($row = $sth->fetch()) {
 			array_push($data,$row);
 		}
+		$dbh = null;
 		return $data;
 
 	}
@@ -136,6 +138,7 @@ class Model_Tasks extends Model{
 			array_push($data,$row);
 		}
 		//print_r($data);
+		$dbh = null;
 		return $data;
 
 	}
