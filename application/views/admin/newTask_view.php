@@ -4,15 +4,17 @@
 	<form action="" method="post" id="addTask">
 		<div id = 'formIn'>
 			<h4 class="h">Введіть номер завдання</h4>
-			<input id='numTaskIn' type="text" name ='task_num'>
+			<input id='numTaskIn' type="text" name ='task_num' value="<?php echo @($data['task'][0]['task_num'])?>">
 			<?php
-			if($data == 'error_num'){
-			echo "<div style='color: red'>Такий номер існує</div>";
+			if(@($data['error'] == 'error_num')){
+				echo "<div style='color: red'>Такий номер існує</div>";
+			}else if(@($data['error'] == 'error_none') ){
+				echo "<div style='color: red'>Збережено</div>";
 			}
 			?>
 			<div><?php $data?></div>
 			<h4 class="h">Введіть текст завдання</h4>
-			<textarea id = 'textTaskAdmin' rows="15" cols="35" name = 'task_text'></textarea></br>
+			<textarea id = 'textTaskAdmin' rows="15" cols="35" name = 'task_text'><?php  echo @($data['task'][0]['task_text'])?></textarea></br>
 			<input class='submitForm' type="submit" value="Зберегти">
 		</div>
 

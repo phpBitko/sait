@@ -12,7 +12,11 @@ class Controller_Tasks extends Controller{
 		//var_dump($this);
 		//print_r($this->tasks->getActualTask());
 		//echo(__FILE__);
-		$this->view->generate('tasks/tasks_view.php', 'template_view.php', $this->tasks->getActualTask());
+		$data = $this->tasks->get_data();
+		//$data['actualTask'] = $this->tasks->getActualTask();
+
+
+		$this->view->generate('tasks/tasks_view.php', 'template_view.php', $data);
 	}
 
 	function action_task($data)	{

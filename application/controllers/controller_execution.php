@@ -39,6 +39,7 @@ class Controller_Execution extends Controller{
 		//													'user_id'=>'1')));
 		$dataModelSolution = $this->execution->get_data();
 		$dataModelSolution['users'] = $this->users->get_data();
+
 		$dataModelSolution['tasks'] = $this->tasks->get_data();
 		//echo "<pre>"; print_r( $dataModelSolution); echo "</pre>";
 

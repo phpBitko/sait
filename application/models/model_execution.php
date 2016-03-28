@@ -1,14 +1,6 @@
 <?php
 class Model_Execution extends Model{
 
-	private $id;
-	private $taskNum;
-	private $user_id;
-	private $comment;
-	private $result;
-	private $is_active;
-
-
 
 	/*public function __construct($arrayObj) {
 		$this->nameSrv = $arrayObj['nameSrv'];
@@ -24,7 +16,7 @@ class Model_Execution extends Model{
 		$data = array();
 		$dbh = $this->getConnectBd();
 		$sth = $dbh->query("SELECT `task_num`, `user_id`, `comment`, `result`,`selected_task`
-							FROM tasks_solution WHERE `is_active` = 1");
+							FROM comment WHERE `is_active` = 1");
 		$sth->setFetchMode(PDO::FETCH_ASSOC);
 
 		while ($row = $sth->fetch()) {
@@ -71,9 +63,9 @@ class Model_Execution extends Model{
 
 	public function setComments($data) {
 		try {
-			$sth = $this->queryBd("update tasks_solution set `selected_task` = 0");
+			$sth = $this->queryBd("update comment set `selected_task` = 0");
 			$sth->execute();
-			$sth = $this->queryBd("update tasks_solution set `comment` = '{$data['comment']}', `selected_task` = 1
+			$sth = $this->queryBd("update comment set `comment` = '{$data['comment']}', `selected_task` = 1
 									where user_id = {$data['user_id']} and task_num ={$data['task_num']}");
 
 			$sth->execute();
@@ -92,7 +84,7 @@ class Model_Execution extends Model{
 			//exit();
 			$data = array();
 			$dbh = $this->getConnectBd();
-			$sth = $dbh->query("select `comment` from tasks_solution where task_num = {$dataMessage['task_num']} and
+			$sth = $dbh->query("select `comment` from comment where task_num = {$dataMessage['task_num']} and
 			                    user_id = {$dataMessage['user_id']}");
 			$sth->setFetchMode(PDO::FETCH_ASSOC);
 			//var_dump($sth);
@@ -110,9 +102,11 @@ class Model_Execution extends Model{
 		}
 	}
 
+	public function addFieldComment($task_num){
+		$sth = $this->queryBd("insert into comment (`user_id`,`task_num`, `is_active`) SELECT `id`,($task_num),(1) from users");
+		$sth->execute();
 
-
-
+	}
 
 
 	public function getNameSrv() {

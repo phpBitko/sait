@@ -1,17 +1,17 @@
 	<div class="content">
-		<h4>Тестове завдання №2</h4>
-
+		<?php if(isset($data)){
+			foreach ($data as $el){
+				if($el['is_actual'] == 1){?>
+		<h4>Тестове завдання №<?php echo $el['task_num']?></h4>
 		<ul>
-				<?php if(isset($data[0]['task_text'])) echo $data[0]['task_text'];?>
+			<?php echo $el['task_text'];}}};?>
+
 		</ul>
-
-
 		</p>
-		<h3><a href="/tasks/task/1">Тестове завдання №1</a></br></h3>
-		<h3><a href="/tasks/task/2">Тестове завдання №2</a></h3>
-		<h3><a href="/tasks/task/3">Тестове завдання №3</a></h3>
-
-
+		<?php if(isset($data)){
+			foreach ($data as $el){
+		        echo "<h3><a href='/tasks/task/{$el['task_num']}'>Тестове завдання №{$el['task_num']}</a></br></h3>";
+			}} ?>
 		<p class="time">До завершення виконання завдання залишилось: </br></p>
 		<span id="my_timer" > </span>
 

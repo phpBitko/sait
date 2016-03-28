@@ -24,22 +24,20 @@ class Model_Tasks extends Model{
 
 			if (isset($data['task_num'])) {
 
-				if($isActive = 1){
-					$sth = $this->queryBd("update tasks set `selected` = 0 where `is_active` = $isActive");
+				if($isActive == 1){
+					$sth = $this->queryBd("update tasks set `selected` = 0 where `is_active` =".$isActive);
 					$sth->execute();
 					$sth = $this->queryBd("update tasks set `selected` = 1
-											where (task_num = {$data['task_num']} AND  `is_active` = $isActive)");
+											where (task_num = {$data['task_num']} AND  `is_active` = {$isActive})");
 					$sth->execute();
 				}else{
-					$sth = $this->queryBd("update tasks set `selected` = 0 where `is_active` = $isActive");
+				//	echo "sfdsfds";
+					$sth = $this->queryBd("update tasks set `selected` = 0 where `is_active` = {$isActive}");
 					$sth->execute();
 					$sth = $this->queryBd("update tasks set `selected` = 1
-											where (task_num = {$data['task_num']} AND  `is_active` = $isActive)");
+											where (task_num = {$data['task_num']} AND `is_active` = {$isActive})");
 					$sth->execute();
 				}
-
-
-
 			}
 
 		}catch (Exception $exept) {
@@ -50,30 +48,56 @@ class Model_Tasks extends Model{
 		}
 
 	}
-	public function setTask($data){
+
+	public function setTask($data) {
 		//echo "<pre>"; print_r($data); echo "</pre>";
 		$dataLocal = array();
-		if(isset($data['task_num']) && is_numeric($data['task_num'])){
+		if (isset($data['task_num']) && is_numeric($data['task_num'])) {
 			$dbh = $this->getConnectBd();
-			$sth = $dbh->query("SELECT `task_num` FROM tasks where `is_active` = 1");
+			$sth =
+					$dbh->query("SELECT `task_num` FROM tasks where `is_active` = 1");
 			$sth->setFetchMode(PDO::FETCH_ASSOC);
 			while ($row = $sth->fetch()) {
-				array_push($dataLocal,$row);
+				array_push($dataLocal, $row);
 			}
-			foreach($dataLocal as $el){
-				if($el['task_num'] == $data['task_num']){
-					$sth = $this->queryBd("insert into tasks(`task_num`, `task_text`,`is_active`) VALUE ('{$data['task_num']}','{$data['task_text']}', 0) ");
-					$this->setSelected($data['task_num'], 0);
+			foreach ($dataLocal as $el) {
+				if ($el['task_num'] == $data['task_num']) {
+					$arrayNotActive = array();
+					$sth =
+							$dbh->query("SELECT `task_num` FROM tasks where `is_active` = 0");
+					$sth->setFetchMode(PDO::FETCH_ASSOC);
+					while ($row = $sth->fetch()) {
+						array_push($arrayNotActive, $row);
+					}
+					foreach ($arrayNotActive as $element) {
+						if ($element['task_num'] == $data['task_num']) {
+							$sth = $this->queryBd("update tasks set
+												  `task_num` = '{$data['task_num']}',
+												  `task_text` = '{$data['task_text']}'
+						  						  where (`task_num` = {$data['task_num']}
+ 												  and `is_active` = 0 )");
+							$sth->execute();
+							$this->setSelected($data, 0);
+
+							return 'error_num';
+						}
+					}
+					$sth = $this->queryBd("insert into tasks(`task_num`, `task_text`,`is_active`)
+										  VALUE ('{$data['task_num']}','{$data['task_text']}', 0) ");
 					$sth->execute();
+					$this->setSelected($data, 0);
+
 					return 'error_num';
 				}
 			}
-
-
+			$sth = $this->queryBd("insert into tasks(`task_num`, `task_text`,`is_active`)
+										  VALUE ('{$data['task_num']}','{$data['task_text']}', 1) ");
+			$sth->execute();
+			return 'error_none';
 
 
 			//echo "<pre>"; print_r($dataLocal); echo "</pre>";
-		 }
+		}
 
 
 
@@ -98,6 +122,20 @@ class Model_Tasks extends Model{
 		while ($row = $sth->fetch()) {
 			array_push($data,$row);
 		}
+		return $data;
+
+	}
+	public function getSelectedTaskNotActual() {
+		$data = array();
+		$dbh = $this->getConnectBd();
+		$sth = $dbh->query("SELECT `task_text`, `task_num` FROM tasks
+								WHERE (`is_active` = 0 and `selected` = 1)");
+		$sth->setFetchMode(PDO::FETCH_ASSOC);
+
+		while ($row = $sth->fetch()) {
+			array_push($data,$row);
+		}
+		//print_r($data);
 		return $data;
 
 	}

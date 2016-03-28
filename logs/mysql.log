@@ -572,3 +572,15 @@ SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in you
 
 SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where is_active = 1' at line 2
 
+Функция:setSelected
+
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where  `is_active` = 0' at line 2
+
+Функция:setComments
+
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'php_sait.tasks_solution' doesn't exist
+
+Функция:setComments
+
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'php_sait.tasks_solution' doesn't exist
+
