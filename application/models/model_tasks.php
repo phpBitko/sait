@@ -61,17 +61,21 @@ class Model_Tasks extends Model{
 			while ($row = $sth->fetch()) {
 				array_push($dataLocal, $row);
 			}
+			$dbh = null;
 			foreach ($dataLocal as $el) {
 				if ($el['task_num'] == $data['task_num']) {
 					$arrayNotActive = array();
+					$dbh = $this->getConnectBd();
 					$sth =
 							$dbh->query("SELECT `task_num` FROM tasks where `is_active` = 0");
 					$sth->setFetchMode(PDO::FETCH_ASSOC);
 					while ($row = $sth->fetch()) {
 						array_push($arrayNotActive, $row);
 					}
+					$dbh = null;
 					foreach ($arrayNotActive as $element) {
 						if ($element['task_num'] == $data['task_num']) {
+
 							$sth = $this->queryBd("update tasks set
 												  `task_num` = '{$data['task_num']}',
 												  `task_text` = '{$data['task_text']}'
