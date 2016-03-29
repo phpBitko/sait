@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="knopka">
-		<a  href="">Це приклад</a>
+		<a  href="admin/editTask">Редагувати завдання</a>
 	</div>
 
 	<div class="knopka">

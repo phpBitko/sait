@@ -1,4 +1,5 @@
 <?php
+//Модель таблиці comment
 class Model_Execution extends Model{
 
 
@@ -10,7 +11,7 @@ class Model_Execution extends Model{
 		}
 		$this->dateSrv = $arrayObj['dateSrv'];
 	}*/
-
+	//Получити всі дані із таблиці comment
 	public function get_data() {
 
 		$data = array();
@@ -28,6 +29,7 @@ class Model_Execution extends Model{
 		return $data;
 
 	}
+	//Перезаписати id користувачів на їх імена. Повертає той самий масив.
 	public function replace_user_id($data){
 		$dbh = $this->getConnectBd();
 		$sth = $dbh->query("SELECT `id`, `name`
@@ -50,7 +52,7 @@ class Model_Execution extends Model{
 
 	}
 
-
+	//Встановити 'checked' для поля 'result' із значенням 1.
 	public function replace_checked($data){
 		foreach($data as &$el){
 			if($el['result'] == 1){
@@ -62,7 +64,7 @@ class Model_Execution extends Model{
 		return $data;
 	}
 
-
+	//Добавити коментар. Приймає масив POST із форми.
 	public function setComments($data) {
 		try {
 			$sth = $this->queryBd("update comment set `selected_task` = 0");
@@ -79,7 +81,7 @@ class Model_Execution extends Model{
 			echo 'Ошибка:'.$exept->getMessage();
 		}
 	}
-
+	//Получити коментар. риймає масив POST із форми(ajax-запит).
 	public function getComments($dataMessage) {
 		try {
 			//print_r($dataMessage);
@@ -108,6 +110,14 @@ class Model_Execution extends Model{
 	public function addFieldComment($task_num){
 		$sth = $this->queryBd("insert into comment (`user_id`,`task_num`, `is_active`) SELECT `id`,($task_num),(1) from users");
 		$sth->execute();
+
+	}
+	public function deleteFieldComment($task_num){
+		$dbh  = $this->getConnectBd();
+		$sth = $dbh->prepare("delete from  comment where `task_num`=$task_num");
+		$res = $sth->execute();
+		$dbh = null;
+		return $res;
 
 	}
 

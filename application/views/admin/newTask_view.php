@@ -19,10 +19,10 @@
 		</div>
 
 		<div class = "textForHtml">
-			<h4>Тестове завдання №<span id = 'numTaskOut'></span></h4>
+			<h4>Тестове завдання №<span id = 'numTaskOut'><?php echo @($data['task'][0]['task_num'])?></span></h4>
 
 			<div id = 'html'>
-
+				<?php  echo @($data['task'][0]['task_text'])?>
 
 			</div>
 		</div>

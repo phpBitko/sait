@@ -4,6 +4,7 @@
 class Route{
 
 	static function start()	{
+		//print_r($_POST);
 		// контроллер и действие по умолчанию
 		$controller_name = 'Main';
 		$action_name = 'index';

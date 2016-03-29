@@ -156,6 +156,7 @@ p{
     outline: none;
     background: #A07965 linear-gradient(#A07965, #754B1D 50%, #754B1D 50%);
     box-shadow: inset rgba(255, 255, 255, .5) 1px 1px;
+    margin-top: 20px;
 }
 .submitForm:active {
     background: #A07965 linear-gradient( #754B1D  ,#754B1D  ,#A07965 );

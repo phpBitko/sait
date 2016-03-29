@@ -1,7 +1,7 @@
 function startTimer() {
     var my_timer = document.getElementById("my_timer");
     var now = new Date();
-    var future = new Date(2016, 02, 28, 9,0,0);
+    var future = new Date(2016, 03, 04, 9,0,0);
     var res = future - now;
 
 

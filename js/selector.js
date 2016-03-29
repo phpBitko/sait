@@ -60,7 +60,7 @@ $(function(){
                     data:{user_id:selectName ,
                          task_num: $(this).attr('value')},
                     success: function(data){
-                        //console.log(data);
+                       // console.log(data);
                         if(data != 0){
                             $('#commentText').html(data[0].comment);
                         }else{
@@ -74,5 +74,49 @@ $(function(){
 
         });
     });
+
+
+    $('#selectTaskEdit').click(function () {
+        $('#selectTaskEdit>option').each(function () {
+            if ($(this).attr('selected') == 'selected' && this.selected == true){
+                //console.log("sdsdss");
+                return false;
+            }else if (this.selected == true && $(this).attr('selected') != 'selected'){
+                var selectName = null;
+                $(this).attr('selected', 'selected');
+                $('#selectName>option').each(function () {
+                    if (this.selected == true) {
+                        selectName = $(this).attr('value')
+                    }
+                });
+               // console.log($(this).attr('value'));
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    url:'/admin/editTask',
+                    headers: {'head':'ajax'},
+                    data:{task_num: $(this).attr('value')},
+                    success: function(data){
+
+                        //console.log(data);
+                        if(data != 0){
+                            console.log(data);
+                            $('#textTaskEdit').html(data[0].task_text);
+                            //console.log($('#textTaskEdit').html());
+                            $('#html').html(data[0].task_text);
+                            $('.save').html('');
+                            $('#numTaskOut').html(data[0].task_num);
+                        }else{
+                            alert('Задача відсутня!')
+                        }
+                    }
+                });
+            }else{
+                this.removeAttribute('selected');
+            }
+
+        });
+    });
+
 
 });

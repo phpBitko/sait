@@ -13,6 +13,7 @@ div.knopka {
     position: relative;
     left: 19%;
     display: inline-block;
+
 }
 div.knopka:hover { background: rgb(255, 140, 95); } /* при наведении курсора мышки */
 div.knopka:active { background: #A07965; } /* при нажатии */

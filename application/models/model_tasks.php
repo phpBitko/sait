@@ -114,6 +114,24 @@ class Model_Tasks extends Model{
 										where task_num = {$data['task_num']}");
 		$sth->execute();*/
 	}
+	public function updateTask($data){
+		$dbh  = $this->getConnectBd();
+		$sth = $dbh->prepare("update tasks set `task_text` ='".$data['task_text']."'
+   												 where `task_num` = '{$data['task_num']}'
+   												 and  `is_active` = 1 ");
+   		$res = $sth->execute();
+		$dbh = null;
+		return $res;
+	}
+
+
+	public function deleteTask($taskNum){
+		$dbh  = $this->getConnectBd();
+		$sth = $dbh->prepare("delete from  tasks where `task_num` = $taskNum");
+		$res = $sth->execute();
+		$dbh = null;
+		return $res;
+	}
 
 
 
