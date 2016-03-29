@@ -48,7 +48,7 @@ class Controller_Admin extends Controller {
 			//exit();
 			if(isset($_POST['save'])){
 				$_POST['task_text'] = addslashes($_POST['task_text']);
-				print_r($_POST);
+				//print_r($_POST);
 				$data['error_update'] = $this->tasks->updateTask($_POST);
 				$this->tasks->setSelected($_POST);
 			}elseif(isset($_POST['delete'])){
