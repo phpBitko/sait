@@ -42,10 +42,10 @@ class Controller_Admin extends Controller {
 			print_r(json_encode($taskText));
 			exit();
 		} elseif (isset($_POST) && $_POST!= null){
-			print_r($_SERVER);
-			print_r($_POST);
+			//print_r($_SERVER);
+			//print_r($_POST);
 
-			exit();
+			//exit();
 			if(isset($_POST['save'])){
 				$_POST['task_text'] = addslashes($_POST['task_text']);
 				print_r($_POST);
