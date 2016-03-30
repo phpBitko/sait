@@ -87,39 +87,53 @@ class Model_Tasks extends Model{
 							return 'error_num';
 						}
 					}
+
 					$sth = $this->queryBd("insert into tasks(`task_num`, `task_text`,`is_active`)
 										  VALUE ('{$data['task_num']}','{$data['task_text']}', 0) ");
 					$sth->execute();
-					$this->setSelected($data, 0);
-
+						//$this->setSelected($data, 0);
 					return 'error_num';
 				}
 			}
-			$sth = $this->queryBd("insert into tasks(`task_num`, `task_text`,`is_active`)
-										  VALUE ('{$data['task_num']}','{$data['task_text']}', 1) ");
-			$sth->execute();
+			if(isset($data['actualCheckBox'])){
+				$dbh  = $this->getConnectBd();
+				$sth = $dbh->prepare("update tasks set `is_actual` = 0");
+				$sth->execute();
+
+				$sth = $dbh->prepare("insert into tasks(`task_num`, `task_text`,`is_active`,`is_actual`)
+												  VALUE ('{$data['task_num']}','{$data['task_text']}', 1, 1) ");
+				$sth->execute();
+				$dbh = null;
+				//$this->setSelected($data, 0);
+
+			}else{
+
+				$sth = $this->queryBd("insert into tasks(`task_num`, `task_text`,`is_active`)
+											  VALUE ('{$data['task_num']}','{$data['task_text']}', 1) ");
+				$sth->execute();
+			}
 			return 'error_none';
-
-
 			//echo "<pre>"; print_r($dataLocal); echo "</pre>";
 		}
-
-
-
-
-
-	/*	$sth = $this->queryBd("insert into tasks set `selected` = 0");
-		$sth->execute();
-		$sth = $this->queryBd("update tasks set `selected` = 1
-										where task_num = {$data['task_num']}");
-		$sth->execute();*/
 	}
 	public function updateTask($data){
 		$dbh  = $this->getConnectBd();
-		$sth = $dbh->prepare("update tasks set `task_text` ='".$data['task_text']."'
-   												 where `task_num` = '{$data['task_num']}'
-   												 and  `is_active` = 1 ");
-   		$res = $sth->execute();
+		if(isset($data['actualCheckBox'])){
+			$sth = $dbh->prepare("update tasks set `is_actual` = 0");
+			$sth->execute();
+
+			$sth = $dbh->prepare("update tasks set `is_actual` = 1
+								  WHERE `task_num` = {$data['task_num']} and `is_active` = 1");
+			$res = $sth->execute();
+			$dbh = null;
+			//$this->setSelected($data, 0);
+		}else{
+			$sth = $dbh->prepare("update tasks set `task_text` ='".$data['task_text']."' , `is_actual` = 0
+   											 where `task_num` = '{$data['task_num']}'
+   											 and  `is_active` = 1 ");
+			$res = $sth->execute();
+		}
+
 		$dbh = null;
 		return $res;
 	}

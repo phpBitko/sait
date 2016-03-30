@@ -30,7 +30,6 @@ $(function(){
                         }else{
                             alert('Задача відсутня!')
                         }
-
                     }
                 });
             }else{
@@ -100,9 +99,14 @@ $(function(){
 
                         //console.log(data);
                         if(data != 0){
-                            console.log(data);
+                            console.log(data[0].is_actual);
                             $('#textTaskEdit').html(data[0].task_text);
-                            //console.log($('#textTaskEdit').html());
+                            if(data[0].is_actual == '1'){
+                                $('#actualCheckBox').attr('checked', 'checked');
+                                document.getElementById('actualCheckBox').checked = true;
+                            }else{
+                                $('#actualCheckBox').removeAttr('checked');
+                            }
                             $('#html').html(data[0].task_text);
                             $('.save').html('');
                             $('#numTaskOut').html(data[0].task_num);

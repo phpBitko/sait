@@ -20,7 +20,7 @@
 		</a>
 	</div>
 	<div id = "menu">
-		<ul class="ul-menu">
+		<ul class="ul-menu dropdown">
 			<li class = "main-menu">
 				<a href="/">Головна</a></li>
 			<li class = "main-menu">
@@ -30,8 +30,12 @@
 			<li class = "main-menu">
 				<a href="/solution">Тут виконувати завдання)</a>
 			</li>
-			<li class = "main-menu">
+			<li class = "main-menu dropdown-top">
 				<a href="/admin">Адмінка</a>
+				<ul class="dropdown-inside">
+					<li><a href="/admin/newTask">Добавити нове завдання</a></li>
+					<li><a href="/admin/editTask">Редагувати завдання</a></li>
+				</ul>
 			</li>
 		</ul>
 	</div>

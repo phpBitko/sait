@@ -5,6 +5,7 @@
 		<div id = 'formIn'>
 			<h4 class="h">Введіть номер завдання</h4>
 			<input id='numTaskIn' type="text" name ='task_num' value="<?php echo @($data['task'][0]['task_num'])?>">
+			<!--Добавити попередження -->
 			<?php
 			if(@($data['error'] == 'error_num')){
 				echo "<div style='color: red'>Такий номер існує</div>";
@@ -12,7 +13,9 @@
 				echo "<div style='color: red'>Збережено</div>";
 			}
 			?>
-			<div><?php $data?></div>
+			<h4 class="h" style="margin: 0">Відмітити як актуальне</h4>
+			<input type='checkbox' name='actualCheckBox' >
+
 			<h4 class="h">Введіть текст завдання</h4>
 			<textarea id = 'textTaskAdmin' rows="15" cols="35" name = 'task_text'><?php  echo @($data['task'][0]['task_text'])?></textarea></br>
 			<input class='submitForm' type="submit" value="Зберегти">

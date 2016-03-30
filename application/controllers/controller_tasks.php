@@ -9,19 +9,14 @@ class Controller_Tasks extends Controller{
 
 
 	function action_index()	{
-		//var_dump($this);
-		//print_r($this->tasks->getActualTask());
-		//echo(__FILE__);
+
 		$data = $this->tasks->get_data();
-		//$data['actualTask'] = $this->tasks->getActualTask();
-
-
 		$this->view->generate('tasks/tasks_view.php', 'template_view.php', $data);
+
 	}
 
 	function action_task($data)	{
 
-		//print_r($this->tasks->get_data($data));
 		if(file_exists('application/views/tasks/task_view.php')){
 			$this->view->generate('tasks/task_view.php', 'template_view.php', $this->tasks->get_data($data));
 		}else{

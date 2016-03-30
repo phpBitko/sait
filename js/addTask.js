@@ -21,20 +21,24 @@ $(function(){
         }
     });
 
-   /* $('#deleteTaskButton').click(function(){
+    /*$('#deleteTaskButton').click(function(){
 
         if(confirm('Ви точно хочете видалити?')){
             console.log('sds');
-        }else {
-            console.log('sds');
+        }else{
+            console.log('sds222');
             $.ajax({
                 type: 'POST',
-                dataType: 'json',
+               // dataType: 'json',
                 url:'/admin/editTask',
-                headers: {'head':'ajax'},
-                data:{delete:'no'}
+                headers: {'delete':'ajax'},
+                data:{delete:'no'},
+                success: function(data){
+                    console.log(data);
+
+                }
             });
-    }
+         }
     })*/
 
 

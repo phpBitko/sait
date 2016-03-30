@@ -18,30 +18,20 @@ class Controller_Execution extends Controller{
 
 
 	function action_index()	{
-
 		$headers = $_SERVER;
-
 		//echo "<pre>"; print_r( $headers); echo "</pre>";
-
 		if(isset($_POST) && isset($headers['HTTP_HEAD'])){
-			//echo "<pre>"; print_r($_POST); echo "</pre>";
 			echo json_encode($this->execution->getComments($_POST));
 			exit();
 		}elseif (isset($_POST) && $_POST !=null){
-
-			//echo "<pre>"; print_r( $_POST); echo "</pre>";
 			$this->execution->setComments($_POST);
 			$this->users->setSelected($_POST);
 			$this->tasks->setSelected($_POST);
 
 		}
-		//echo json_encode($this->execution->getComments(array('task_num'=>'3',
-		//													'user_id'=>'1')));
 		$dataModelSolution = $this->execution->get_data();
 		$dataModelSolution['users'] = $this->users->get_data();
-
 		$dataModelSolution['tasks'] = $this->tasks->get_data();
-		//echo "<pre>"; print_r( $dataModelSolution); echo "</pre>";
 
 		$this->view->generate('execution/execution_view.php', 'template_view.php',$dataModelSolution);
 	}

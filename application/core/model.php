@@ -9,7 +9,6 @@ class Model{
 		try {
 			$dbh = new PDO(Core::$DSN, Core::$USER, Core::$PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
 			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
 			return $dbh;
 
 		} catch (PDOException $exept) {

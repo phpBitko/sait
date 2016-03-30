@@ -6,21 +6,29 @@
 				<h4 class="h">Виберіть номер завдання</h4>
 				<select id='selectTaskEdit' class="selectMenu"
 				        style="margin-top: 0" name="task_num">
+					<!--   Добавити список задач    -->
 					<?php
 					$i = 0;
 					$j = null;
+					$act = 0;
 
 					foreach ($data['task'] as $row) {
 						$sel = '';
 						if ($row['selected'] == 1) {
 							$j = $i;
 							$sel = "selected = 'selected'";
+							$act = $row['is_actual'];
 						}
 						echo "<option value='{$row['task_num']}'{$sel}>Завдання №{$row['task_num']}</option>";
 						$i++;
 					}
+
 					?>
+					<!--   Добавити список задач    -->
+
 				</select>
+				<h4 class="h" style="margin: 0">Відмітити як актуальне</h4>
+				<input id = 'actualCheckBox' type='checkbox' name='actualCheckBox' <?php if(@($act == 1)) echo ' checked="checked"'?> >
 				<h4 class="h">Текст завдання</h4>
 				<textarea id='textTaskEdit' rows="15" cols="35"
 				          name='task_text'><?php echo @($data['task'][$j]['task_text']) ?></textarea></br>

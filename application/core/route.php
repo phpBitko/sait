@@ -11,9 +11,6 @@ class Route{
 
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
 
-
-		//print_r($routes);
-		//exit();
 		// получаем имя контроллера
 		if ( !empty($routes[1]) ){
 			$controller_name = $routes[1];
@@ -33,10 +30,6 @@ class Route{
 			$controller_name = 'Main';
 			$action_name = 'index';
 		}
-
-
-
-		//echo '<br>'.$param;
 
 		// добавляем префиксы
 		$model_name = 'Model_'.$controller_name;
@@ -58,18 +51,6 @@ class Route{
 		$controller_file = strtolower($controller_name).'.php';
 		$controller_path = "application/controllers/".$controller_file;
 		//echo $controller_name."sss". $action_name;
-
-		/*$data = array();
-		if($controller_name == 'Controller_tasks' && $action_name != "action_index" ){
-			preg_match("/(\D+)([0-9]+)/", $action_name, $data);
-			if ($data[1] == 'action_task'){
-				$action_name = $data[1];
-				$param = $data[2];
-			}else{
-				$data = null;
-			}
-		}*/
-
 
 		if(file_exists($controller_path)){
 			include "application/controllers/".$controller_file;

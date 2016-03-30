@@ -8,19 +8,11 @@ class Controller_Solution extends Controller{
 
 
 	function action_index()	{
-		//var_dump($this);
-		//$dataModelSolution = $this->model->get_data();
-		//echo $dataModelSolution;
-
-
 
 		$this->view->generate('solution/solution_view.php', 'template_view.php');
 
-
-
-
-
 	}
+
 	function action_andriy($data)	{
 		//var_dump($this);
 		if($data == null){
