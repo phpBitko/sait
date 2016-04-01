@@ -111,6 +111,15 @@ li{
     text-align: center;
     margin: 10px;
 }
+
+.addTimeNews{
+    font-size: 14px;
+    background: rgba(162, 173, 183, 0.26);
+    padding: 10px;
+
+
+}
+
 .tableTasks {
     table-layout: fixed;
     height:100px;
@@ -178,7 +187,20 @@ p{
     margin-bottom: 20px;
     resize: none;
 }
+.newsHead{
+    border-bottom: 3px solid rgb(97, 93, 88);
+   //
 
+}
+.newsContent{
+
+    box-shadow: 0 0 8px #7A83AF;
+    border: 1px solid #B5BFC5;
+    background-color:rgb(251, 199, 179);
+    margin: 15px;
+    padding:  2px 30px 2px 30px;
+
+}
 .textForHtml{
     background: #E4C8A8;
     width: 630px;
@@ -259,5 +281,10 @@ ul.dropdown .dropdown-inside li{
 }
 ul.dropdown .dropdown-inside :hover {
     background: #61381e;
+
+}
+.newsText{
+    margin-top: 20px;
+    margin-bottom: 20px;
 
 }
