@@ -11,7 +11,7 @@
 				<?php
 				echo "Опубліковано: {$el['news_add_time']}";
 				if ($el['modifiedDate'] !=1){
-					echo "/Відректовано: {$el['news_edit_time']}";
+					echo "/Відредактовано: {$el['news_edit_time']}";
 				}
 				?>
 
