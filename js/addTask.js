@@ -9,6 +9,24 @@ $(function(){
         var text = $('#textTaskEdit').val();
         $('#html').html(text);
     });
+
+    $('#textNewsAdmin').keyup(function () {
+        var text = $('#textNewsAdmin').val();
+        $('#html').html(text);
+    });
+
+    $('#textNewsAdmin').keyup(function () {
+        var text = $('#textNewsAdmin').val();
+        $('#html').html(text);
+    });
+
+    $('#headNewsIn').keyup(function () {
+        var text = $('#headNewsIn').val();
+        $('#headNewsOut').html(text);
+    });
+
+
+
     $('#numTaskIn').keyup(function () {
         var text = $('#numTaskIn').val();
         if(+text){
@@ -20,6 +38,9 @@ $(function(){
             $('#numTaskIn').val('');
         }
     });
+
+
+
 
     /*$('#deleteTaskButton').click(function(){
 

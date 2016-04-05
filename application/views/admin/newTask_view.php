@@ -1,7 +1,7 @@
 <div class="content" >
 	<div id = 'size'>
 
-	<form action="" method="post" id="addTask">
+	<form action="" method="post" class="formAdmin">
 		<div id = 'formIn'>
 			<h4 class="h">Введіть номер завдання</h4>
 			<input id='numTaskIn' type="text" name ='task_num' value="<?php echo @($data['task'][0]['task_num'])?>">

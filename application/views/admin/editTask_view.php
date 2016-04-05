@@ -1,7 +1,7 @@
 <div class="content">
 	<div id='size'>
 
-		<form action="" method="post" id="addTask">
+		<form action="" method="post" class="formAdmin">
 			<div id='formIn'>
 				<h4 class="h">Виберіть номер завдання</h4>
 				<select id='selectTaskEdit' class="selectMenu"

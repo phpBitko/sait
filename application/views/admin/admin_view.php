@@ -8,11 +8,11 @@
 	</div>
 
 	<div class="knopka">
-		<a  href="">Це приклад</a><br>
+		<a  href="admin/newNews">Добавити повідомлення</a><br>
 	</div>
 
 	<div class="knopka">
-		<a href="">Це приклад</a>
+		<a href="admin/editNews">Редагувати повідомлення</a>
 	</div>
 
 </div>

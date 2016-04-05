@@ -35,6 +35,8 @@
 				<ul class="dropdown-inside">
 					<li><a href="/admin/newTask">Добавити нове завдання</a></li>
 					<li><a href="/admin/editTask">Редагувати завдання</a></li>
+					<li><a href="/admin/newNews">Добавити повідомлення</a></li>
+					<li><a href="/admin/editNews">Редагувати повідомлення</a></li>
 				</ul>
 			</li>
 		</ul>
